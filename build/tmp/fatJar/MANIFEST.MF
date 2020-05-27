@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Implementation-Title: mk8dx-mogivote-bot
+Implementation-Version: 1.0-SNAPSHOT
+Main-Class: me.notsmatch.mogivotebot.Main
+
