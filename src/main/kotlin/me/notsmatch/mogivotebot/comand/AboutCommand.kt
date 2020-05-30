@@ -104,7 +104,7 @@ ${event.jda.guilds.size} Servers""",
     }
 
     init {
-        name = "kyoshuabout"
+        name = "mvbotabout"
         help = "shows info about the bot"
         guildOnly = false
         this.perms = perms as Array<Permission>
