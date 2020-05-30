@@ -1,17 +1,18 @@
 package me.notsmatch.mogivotebot
 
 import com.jagrosh.jdautilities.command.CommandClientBuilder
+import com.jagrosh.jdautilities.commons.waiter.EventWaiter
+import me.notsmatch.mogivotebot.comand.AboutCommand
+import me.notsmatch.mogivotebot.comand.GuildlistCommand
 import me.notsmatch.mogivotebot.comand.VoteComamnd
 import me.notsmatch.mogivotebot.service.VoteService
 import me.notsmatch.mogivotebot.util.NumberUtils
-import net.dv8tion.jda.api.AccountType
-import net.dv8tion.jda.api.JDA
-import net.dv8tion.jda.api.JDABuilder
-import net.dv8tion.jda.api.OnlineStatus
+import net.dv8tion.jda.api.*
 import net.dv8tion.jda.api.entities.Activity
 import net.dv8tion.jda.api.events.ReadyEvent
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
+import java.awt.Color
 import java.util.*
 
 
@@ -24,17 +25,20 @@ class Bot (private val token: String) {
 
     lateinit var jda: JDA
     val voteService = VoteService()
+    val eventWaiter = EventWaiter()
 
     fun start() {
         instance = this
         jda = JDABuilder(AccountType.BOT).setToken(token).setStatus(OnlineStatus.ONLINE).build()
         val builder = CommandClientBuilder()
-        builder.addCommands(VoteComamnd(voteService))
+        builder.addCommands(VoteComamnd(voteService),
+            GuildlistCommand(eventWaiter),
+            AboutCommand(Color.GREEN, "https://github.com/notsmatch/mogi-votebot", Permission.VIEW_CHANNEL, Permission.MESSAGE_WRITE, Permission.MESSAGE_READ, Permission.MESSAGE_ADD_REACTION))
 
         builder.setOwnerId("695218967173922866")
         builder.setPrefix("_")
 
-        builder.setHelpWord("vbot")
+        builder.setHelpWord("mvbot")
 
         val client = builder.build()
         jda.addEventListener(Listener())
@@ -52,7 +56,7 @@ class Bot (private val token: String) {
                     event.jda.apply {
                         presence.setPresence(
                             OnlineStatus.ONLINE,
-                            Activity.watching("github.com/notsmatch/mogi-votebot | ${guilds.size} servers")
+                            Activity.watching("type _mvbotabout | ${guilds.size} servers")
                         )
                     }
                 }
