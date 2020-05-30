@@ -1,6 +1,6 @@
 # Mogi Vote | 投票Bot
 
-Donate/支援・寄付: https://riptakagi.fanbox.cc
+Donate: https://riptakagi.fanbox.cc
 
 https://discord.com/api/oauth2/authorize?client_id=715063400203288617&permissions=3072&scope=bot
 
