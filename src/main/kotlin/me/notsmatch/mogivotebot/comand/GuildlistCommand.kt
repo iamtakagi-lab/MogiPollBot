@@ -64,6 +64,7 @@ class GuildlistCommand(waiter: EventWaiter?) : Command() {
         name = "mvguildlist"
         help = "shows the list of guilds the bot is on"
         arguments = "[pagenum]"
+        hidden = true
         botPermissions = arrayOf(
             Permission.MESSAGE_EMBED_LINKS,
             Permission.MESSAGE_ADD_REACTION
