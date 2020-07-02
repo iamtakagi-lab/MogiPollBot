@@ -5,10 +5,12 @@ https://discord.com/api/oauth2/authorize?client_id=715063400203288617&permission
 # Commands
 _mpbot
 
-![](https://i.imgur.com/3PizStV.png)
+![](https://i.imgur.com/EMkHyhH.png)
 
 # Usage
 
-![](https://i.imgur.com/0XqRJNU.png)
+_poll 
+
+![](https://i.imgur.com/aERZH91.png)
 
 Donate: https://riptakagi.fanbox.cc
